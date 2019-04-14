@@ -93,7 +93,6 @@ GEM
     ffi (1.10.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
-    high_voltage (3.1.0)
     hub (1.12.4)
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
@@ -242,7 +241,6 @@ DEPENDENCIES
   capybara (>= 2.15)
   chromedriver-helper
   devise
-  high_voltage
   hub
   jbuilder (~> 2.5)
   jquery-rails
