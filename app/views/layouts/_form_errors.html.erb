@@ -1,5 +1,5 @@
 <% if resource.errors.any? %>
-  <div class="alert alert-danger">
+  <div id="error_explanation">
     <h3>The form has <%= pluralize(resource.errors.count, "error") %></h3>
     <ul>
       <% resource.errors.full_messages.each do |message| %>
