@@ -14,6 +14,7 @@ gem 'devise'
 gem 'jquery-rails'
 gem 'pg'
 gem 'pundit'
+gem 'faker'
 
 group :test do
   gem 'capybara', '>= 2.15'
