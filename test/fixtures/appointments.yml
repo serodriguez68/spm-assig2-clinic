@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  health_care_professional: one
+  user: one
+  start: 2019-04-22 16:13:26
+  end: 2019-04-22 16:13:26
+  message: MyText
+
+two:
+  health_care_professional: two
+  user: two
+  start: 2019-04-22 16:13:26
+  end: 2019-04-22 16:13:26
+  message: MyText

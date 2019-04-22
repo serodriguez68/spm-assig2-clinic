@@ -29,9 +29,24 @@ end
 
 # Create users
 10.times do
-  admin_user = User.create!(email: Faker::Internet.email, name: Faker::Name.name,
-                            password: default_password, password_confirmation: default_password,
-                            address: Faker::Address.full_address,
-                            phone: Faker::Number.leading_zero_number(10))
+  User.create!(email: Faker::Internet.email, name: Faker::Name.name,
+               password: default_password, password_confirmation: default_password,
+               address: Faker::Address.full_address,
+               phone: Faker::Number.leading_zero_number(10))
 end
+
+# Crate some appointments for today and tomorrow
+hcp = HealthCareProfessional.first
+user = User.last
+slots_to_occupy = [9, 14, 16]
+
+slots_to_occupy.each do |slot|
+  datetime_today = Date.today.beginning_of_day + slot.hours
+  Appointment.create!(health_care_professional: hcp, user: user, start_time: datetime_today)
+
+  datetime_tomorrow = Date.tomorrow.beginning_of_day + slot.hours
+  Appointment.create!(health_care_professional: hcp, user: user, start_time: datetime_tomorrow)
+
+end
+
 

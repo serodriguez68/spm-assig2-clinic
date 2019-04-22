@@ -9,6 +9,9 @@ class User < ApplicationRecord
             numericality: true,
             length: { minimum: 10, maximum: 15 }
 
+  # Associations
+  has_many :appointments
+
   private
 
   def set_default_role

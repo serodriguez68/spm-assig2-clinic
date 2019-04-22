@@ -6,6 +6,7 @@ class HealthCareProfessional < ApplicationRecord
 
   # Associations
   belongs_to :specialty
+  has_many :appointments
 
   # Delegators
   delegate :name, prefix: true, allow_nil: true, to: :specialty
