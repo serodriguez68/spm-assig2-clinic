@@ -25,7 +25,7 @@ class Appointment < ApplicationRecord
     start_date, end_date = start_date.to_date, end_date.to_date
     ra = raw_availability_between(start_date, end_date, time_now)
     busy_slots = hcp.appointments.between_dates(start_date, end_date).pluck(:start_time)
-    return ra - busy_slots
+    return ra.reject{ |slot| busy_slots.include?(slot) }
   end
 
   def self.available_slots_on_date(hcp, date, time_now = DateTime.now)
