@@ -24,12 +24,12 @@
         <div class="col-md">
           <%= label_tag :from_date, 'Search From Date' %>
           <%= date_field_tag :from_date, Date.today,
-                             class: 'form-control', id: 'appointment_from_date', disabled: true %>
+                             class: 'form-control', id: 'appointment_from_date', disabled: true, min: Date.today %>
         </div>
         <div class="col-md">
           <%= label_tag :to_date, 'To Date' %>
           <%= date_field_tag :to_date, Date.tomorrow,
-                             class: 'form-control', id: 'appointment_to_date', disabled: true %>
+                             class: 'form-control', id: 'appointment_to_date', disabled: true, min: Date.today %>
         </div>
       </div>
     </div>
