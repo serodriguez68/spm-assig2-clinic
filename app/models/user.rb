@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  enum role: [:user, :admin]
+  enum role: [:patient, :admin]
   after_initialize :set_default_role, if: :new_record?
 
   # Validations
@@ -15,7 +15,7 @@ class User < ApplicationRecord
   private
 
   def set_default_role
-    self.role ||= :user
+    self.role ||= :patient
   end
 
   # Include default devise modules. Others available are:

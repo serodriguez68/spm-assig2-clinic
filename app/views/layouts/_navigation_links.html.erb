@@ -2,4 +2,9 @@
   <% if policy(HealthCareProfessional).index? %>
     <li class='nav-item'><%= link_to 'Health Care Professionals', health_care_professionals_path, class: 'nav-link' %></li>
   <% end %>
+
+  <% if policy(Appointment).new? %>
+    <li class='nav-item'><%= link_to 'Book a New Appointment', new_appointment_path, class: 'nav-link' %></li>
+  <% end %>
+
 <% end %>

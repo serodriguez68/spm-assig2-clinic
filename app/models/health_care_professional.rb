@@ -18,4 +18,8 @@ class HealthCareProfessional < ApplicationRecord
   def resigned?
     resigned_at.present?
   end
+
+  def name_and_fee
+    "#{name} ($#{(consultation_fee)})"
+  end
 end

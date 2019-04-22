@@ -44,6 +44,14 @@ class HealthCareProfessionalsController < ApplicationController
     redirect_to health_care_professionals_url, notice: 'Health care professional was successfully marked as resigned.'
   end
 
+  def index_of_specialty
+    authorize HealthCareProfessional
+    @hcps = HealthCareProfessional.where(specialty_id: params[:specialty_id])
+    respond_to do |format|
+      format.json { render json: @hcps }
+    end
+  end
+
   private
     def set_health_care_professional
       @health_care_professional = HealthCareProfessional.find(params[:id])

@@ -34,4 +34,8 @@ class HealthCareProfessionalPolicy
     overall_policy && !hcp.resigned?
   end
 
+  def index_of_specialty?
+    current_user.admin? or current_user.patient?
+  end
+
 end

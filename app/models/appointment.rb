@@ -22,6 +22,7 @@ class Appointment < ApplicationRecord
   end
 
   def self.available_slots_between(hcp, start_date, end_date, time_now = DateTime.now)
+    start_date, end_date = start_date.to_date, end_date.to_date
     ra = raw_availability_between(start_date, end_date, time_now)
     busy_slots = hcp.appointments.between_dates(start_date, end_date).pluck(:start_time)
     return ra - busy_slots
@@ -34,6 +35,7 @@ class Appointment < ApplicationRecord
   # Returns an array of Datetimes with all raw availabilites for the given date range
   # Empty array if no raw availabilites are available
   def self.raw_availability_between(start_date, end_date, time_now = DateTime.now)
+    start_date, end_date = start_date.to_date, end_date.to_date
     raw_avail = []
     (start_date..end_date).each do |date|
       raw_avail += raw_availability_on_date(date, time_now)
@@ -44,6 +46,7 @@ class Appointment < ApplicationRecord
   # Returns an array of Datetimes with all raw availabilites for the given date
   # Empty array if none are available
   def self.raw_availability_on_date(date, time_now = DateTime.now)
+    date = date.to_date
     first_raw_slot = first_raw_slot_available_on_date(date, time_now)
     last_raw_slot = last_raw_slot_available_on_date(date, time_now)
 
