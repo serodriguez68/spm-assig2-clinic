@@ -1,0 +1,24 @@
+<p>A new appointment has been created. These are the details:</p>
+
+<p>
+  <strong> Date and Time: </strong>
+  <span><%= l(@app.start_time, format: :long )%></span>
+</p>
+
+<p>
+  <strong>Patient: </strong>
+  <span><%= "#{@user.name} - #{@user.email} - Phone: #{@user.phone}" %></span>
+</p>
+
+<% if @app.message.present? %>
+  <p>
+    <strong>Message from the patient</strong><br>
+    <%= @app.message %>
+  </p>
+
+<% else %>
+  <p>The patient has not entered a message.</p>
+<% end %>
+
+
+

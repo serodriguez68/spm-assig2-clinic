@@ -11,6 +11,8 @@ class AppointmentsController < ApplicationController
     @appointment = current_user.appointments.new(appointment_params)
     authorize @appointment
     if @appointment.save
+      # Send email to HCP
+      AppointmentMailer.with(appointment: @appointment).create.deliver_later
       redirect_to root_path, notice: "Your appointment has been created"
     else
       render :new
