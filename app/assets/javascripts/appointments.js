@@ -120,9 +120,9 @@ $( document ).ready(function() {
 
             // Extract options for select from data
             let options = data.map(function (datetime) {
-                date = new Date(datetime)
+                let date = new Date(datetime);
                 return {
-                    text: `${date.getUTCDate()}/${date.getUTCMonth() + 1}/${date.getUTCFullYear()} at ${date.getUTCHours()}:00`,
+                    text: `${date.toDateString()} at ${date.getHours()}:00`,
                     value: datetime
                 }
             });
