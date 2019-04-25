@@ -1,6 +1,7 @@
 class AppointmentsController < ApplicationController
   before_action :authenticate_user!
   after_action :verify_authorized
+  after_action :verify_policy_scoped, only: [:my, :all]
 
   def new
     @appointment = Appointment.new(user: current_user)
@@ -13,7 +14,7 @@ class AppointmentsController < ApplicationController
     if @appointment.save
       # Send email to HCP
       AppointmentMailer.with(appointment: @appointment).create.deliver_later
-      redirect_to root_path, notice: "Your appointment has been created"
+      redirect_to my_appointments_path, notice: "Your appointment has been created"
     else
       render :new
     end
@@ -23,6 +24,11 @@ class AppointmentsController < ApplicationController
   end
 
   def my
+    @appointments = policy_scope(Appointment)
+                      .includes({health_care_professional: [:specialty], user: nil})
+                      .order(start_time: :desc)
+                      .page(params[:page])
+    authorize(@appointments)
   end
 
   def all

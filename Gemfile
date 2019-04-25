@@ -15,6 +15,7 @@ gem 'jquery-rails'
 gem 'pg'
 gem 'pundit'
 gem 'faker'
+gem 'kaminari'
 
 group :test do
   gem 'capybara', '>= 2.15'

@@ -15,7 +15,7 @@ class AppointmentPolicy
   end
 
   def destroy?
-    current_user.patient? and app.user == current_user
+    current_user.patient? and app.user == current_user and !app.past?
   end
 
   def my?
@@ -30,6 +30,22 @@ class AppointmentPolicy
     current_user.patient? or current_user.admin?
   end
 
-  #   TODO add policy scope for my only to get my appointments
+  class Scope
+    attr_reader :current_user, :scope
+
+    def initialize(current_user, scope)
+      @current_user  = current_user
+      @scope = scope
+    end
+
+    def resolve
+      if current_user.admin?
+        scope.all
+      elsif current_user.patient?
+        scope.where(user: current_user)
+      end
+    end
+
+  end
 
 end

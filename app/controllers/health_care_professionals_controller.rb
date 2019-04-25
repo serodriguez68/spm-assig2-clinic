@@ -6,6 +6,7 @@ class HealthCareProfessionalsController < ApplicationController
   def index
     @health_care_professionals = HealthCareProfessional.all
                                    .includes(:specialty).order(name: :asc)
+                                   .page(params[:page])
     authorize @health_care_professionals
   end
 

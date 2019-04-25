@@ -7,12 +7,21 @@ class Appointment < ApplicationRecord
   # Validations
   validates :start_time, presence: true
   validate :created_on_available_slot, on: :created
+  validates :consultation_fee, numericality: { greater_than_or_equal_to: 0, less_than: 1000}
 
   # Associations
   belongs_to :health_care_professional
   belongs_to :user
 
+  # Delegators
+  delegate :name, :specialty_name, prefix: true, to: :health_care_professional
+
+  # Callbacks
+  before_validation :copy_consultation_fee
+
+
   # Class Methods
+  # =======================================================================
   scope :on_date, -> (date) { where(start_time: [date.to_date.beginning_of_day..date.to_date.end_of_day]) }
   scope :between_dates, -> (start_date, end_date) { where(start_time: [start_date.to_date.beginning_of_day..end_date.to_date.end_of_day]) }
 
@@ -116,8 +125,13 @@ class Appointment < ApplicationRecord
 
 
   #  Instance Methods
+  # =======================================================================
   def end_time
     start_time + APPOINTMENT_LENGTH.hours
+  end
+
+  def past?
+    start_time < DateTime.now
   end
 
   private
@@ -125,6 +139,10 @@ class Appointment < ApplicationRecord
     unless self.class.available_on?(health_care_professional, start_time)
       errors.add(:start_time, "#{health_care_professional.name} is not available on #{start_time}")
     end
+  end
+
+  def copy_consultation_fee
+    self.consultation_fee = health_care_professional.consultation_fee
   end
 
 end
