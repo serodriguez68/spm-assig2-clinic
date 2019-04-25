@@ -16,4 +16,12 @@ class ApplicationController < ActionController::Base
     flash[:alert] = "Access denied."
     redirect_to (request.referrer || root_path)
   end
+
+  def after_sign_in_path_for(resource)
+    if resource.patient?
+      my_appointments_path
+    elsif resource.admin?
+      all_appointments_path
+    end
+  end
 end

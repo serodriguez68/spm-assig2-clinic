@@ -21,6 +21,11 @@ class AppointmentsController < ApplicationController
   end
 
   def destroy
+    @appointment = Appointment.find(params[:id])
+    authorize @appointment
+    AppointmentMailer.with(appointment: @appointment).notify_cancellation.deliver_now
+    @appointment.destroy
+    redirect_to my_appointments_path, notice: "Your appointment has been cancelled"
   end
 
   def my

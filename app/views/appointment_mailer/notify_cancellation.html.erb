@@ -1,0 +1,14 @@
+<h1>One of your appointments has been cancelled by the patient.</h1>
+
+<p>
+  <strong> Date and Time: </strong>
+  <span><%= l(@app.start_time, format: :long )%></span>
+</p>
+
+<p>
+  <strong>Patient: </strong>
+  <span><%= "#{@user.name} - #{@user.email} - Phone: #{@user.phone}" %></span>
+</p>
+
+
+
