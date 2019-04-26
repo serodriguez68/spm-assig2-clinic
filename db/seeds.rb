@@ -1,6 +1,6 @@
 default_password = "123456789"
 # Create admin user
-admin_user = User.create!(email: 'alena@alenaclinic.com', name: 'Alena',
+admin_user = User.create!(email: 'alena@alenahealth.com', name: 'Alena',
                           password: default_password, password_confirmation: default_password,
                           address: Faker::Address.full_address,
                           phone: Faker::Number.leading_zero_number(10))
