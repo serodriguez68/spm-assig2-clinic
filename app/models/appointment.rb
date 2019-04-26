@@ -15,6 +15,7 @@ class Appointment < ApplicationRecord
 
   # Delegators
   delegate :name, :specialty_name, prefix: true, to: :health_care_professional
+  delegate :name, :phone, :email, prefix: true, to: :user
 
   # Callbacks
   before_validation :copy_consultation_fee

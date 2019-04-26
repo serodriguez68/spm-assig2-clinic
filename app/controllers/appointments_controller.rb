@@ -37,6 +37,18 @@ class AppointmentsController < ApplicationController
   end
 
   def all
+    authorize(Appointment)
+    @appointments = policy_scope(Appointment)
+                      .includes({health_care_professional: [:specialty], user: nil})
+                      .joins(:health_care_professional)
+                      .order('start_time DESC, health_care_professionals.name ASC')
+                      .page(params[:page])
+
+    @today_tom_apps = policy_scope(Appointment)
+                      .includes({health_care_professional: [:specialty], user: nil})
+                      .between_dates(Date.today, Date.tomorrow)
+                      .joins(:health_care_professional)
+                      .order('start_time ASC, health_care_professionals.name ASC')
   end
 
   def available_slots_between

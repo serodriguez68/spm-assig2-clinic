@@ -1,2 +1,44 @@
-<h1>Appointments#all</h1>
-<p>Find me in app/views/appointments/all.html.erb</p>
+<div class="container">
+  <br>
+  <h1>Today and Tomorrow</h1>
+  <%= render 'appointments/on_date_summary', appointments: @today_tom_apps %>
+
+  <br>
+  <h2>All Appointments</h2>
+  <%= paginate @appointments %>
+  <table class="table table-hover">
+    <thead class="thead-dark">
+    <tr>
+      <th>ID</th>
+      <th>Date and Time</th>
+      <th>Health Care Professional</th>
+      <th>Consultation Fee</th>
+      <th>Patient</th>
+
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @appointments.each do |app| %>
+      <%= content_tag :tr, class: app.past? ? 'table-secondary' : '' do  %>
+
+        <td><%= app.id %></td>
+        <td><%= l app.start_time, format: :long %></td>
+        <td>
+          <strong><%= app.health_care_professional_name %> </strong>
+          | <%= app.health_care_professional_specialty_name %>
+        </td>
+        <td><%= number_to_currency app.consultation_fee %></td>
+        <td>
+          <strong><%= app.user_name %> </strong>
+          | <%= app.user_phone %>
+          | <%= app.user_email %>
+        </td>
+      <% end %>
+    <% end %>
+    </tbody>
+  </table>
+  <%= paginate @appointments %>
+
+</div>
+
