@@ -47,7 +47,7 @@ class HealthCareProfessionalsController < ApplicationController
 
   def index_of_specialty
     authorize HealthCareProfessional
-    @hcps = HealthCareProfessional.where(specialty_id: params[:specialty_id])
+    @hcps = HealthCareProfessional.active.where(specialty_id: params[:specialty_id])
     respond_to do |format|
       format.json { render json: @hcps }
     end

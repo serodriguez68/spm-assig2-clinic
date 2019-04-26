@@ -11,6 +11,10 @@ class HealthCareProfessional < ApplicationRecord
   # Delegators
   delegate :name, prefix: true, allow_nil: true, to: :specialty
 
+  # Scopes
+  scope :active, -> { where(resigned_at: nil) }
+
+  # Instance Methods
   def resign!
     update!(resigned_at: Time.now)
   end
