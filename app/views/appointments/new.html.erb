@@ -1,55 +1,63 @@
-<div class="container">
-  <br>
-  <h1>Create a new appointment</h1>
+<div class="main">
+    <section class="signup">
+        <img src="images/signup-bg.jpg" alt="">
+        <div class="container">
 
-  <%= form_for @appointment do |f| %>
+            <div class="signup-content">
+                <br>
+                <h2>Create an appointment</h2>
+                <br>
+                <%= form_for @appointment do |f| %>
 
-    <%= render 'layouts/form_errors', resource: @appointment %>
+                    <%= render 'layouts/form_errors', resource: @appointment %>
 
-    <div class="form-group">
-      <%= label_tag :specialty_id, 'Specialty' %>
-      <%= collection_select(:specialty, :id, Specialty.all.order(name: :asc), :id, :name, {prompt: true},
-                            {class: 'form-control', id: 'appointment_specialty_select', required: true }) %>
-    </div>
+                        <div class="form-group">
+                            <%= label_tag :specialty_id, 'Specialty' %>
+                                <%= collection_select(:specialty, :id, Specialty.all.order(name: :asc), :id, :name, {prompt: true},
+                            {class: 'form-control  simplepicker-btn', id: 'appointment_specialty_select', required: true }) %>
+                        </div>
 
-    <div class="form-group">
-      <%= f.label :health_care_professional_id, 'Health Care Professional (hourly fee)' %>
-      <%= f.collection_select(:health_care_professional_id, HealthCareProfessional.all.order(name: :asc), :id, :name_and_fee,
+                        <div class="form-group">
+                            <%= f.label :health_care_professional_id, 'Health Care Professional (hourly fee)' %>
+                                <%= f.collection_select(:health_care_professional_id, HealthCareProfessional.all.order(name: :asc), :id, :name_and_fee,
                               {prompt: '-- Select a Specialty First --'},
-                              {class: 'form-control', id: 'appointment_hcp_select', required: true, disabled: true }) %>
-    </div>
+                              {class: 'form-control  simplepicker-btn', id: 'appointment_hcp_select', required: true, disabled: true }) %>
+                        </div>
 
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md">
+                                    <%= label_tag :from_date, 'Search From Date' %>
+                                        <%= date_field_tag :from_date, Date.today,
+                             class: 'form-control simplepicker-btn', id: 'appointment_from_date', disabled: true, min: Date.today %>
+                                </div>
+                                <div class="col-md">
+                                    <%= label_tag :to_date, 'To Date' %>
+                                        <%= date_field_tag :to_date, Date.tomorrow,
+                             class: 'form-control simplepicker-btn', id: 'appointment_to_date', disabled: true, min: Date.today %>
+                                </div>
+                            </div>
+                        </div>
 
-    <div class="form-group">
-      <div class="row">
-        <div class="col-md">
-          <%= label_tag :from_date, 'Search From Date' %>
-          <%= date_field_tag :from_date, Date.today,
-                             class: 'form-control', id: 'appointment_from_date', disabled: true, min: Date.today %>
-        </div>
-        <div class="col-md">
-          <%= label_tag :to_date, 'To Date' %>
-          <%= date_field_tag :to_date, Date.tomorrow,
-                             class: 'form-control', id: 'appointment_to_date', disabled: true, min: Date.today %>
-        </div>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :start_time, 'Available Appointments' %>
-      <%= f.select(:start_time,  [], { prompt: 'Please select an appointment' },
-                            { class: 'form-control', id: 'appointment_start_time',
+                        <div class="form-group">
+                            <%= f.label :start_time, 'Available Appointments' %>
+                                <%= f.select(:start_time,  [], { prompt: 'Please select an appointment' },
+                            { class: 'form-control simplepicker-btn btn-lg btn-block', id: 'appointment_start_time',
                              required: true, disabled: true} ) %>
-    </div>
+                        </div>
 
-    <div class="form-group">
-      <%= f.label :message, 'Send a message to your Health Care Professional (optional)' %>
-      <%= f.text_area :message, class: 'form-control' %>
-    </div>
+                        <div class="form-group">
+                            <%= f.label :message, 'Send a message to your Health Care Professional (optional)' %>
+                                <%= f.text_area :message, class: 'form-control border border-info' %>
+                        </div>
 
-    <%= f.submit 'Submit', class: 'btn btn-primary btn-block' %>
+                        <%= f.submit 'Submit', class: 'form-submit' %>
 
-  <% end %>
+                            <% end %>
 
+            </div>
+
+        </div>
 </div>
-
+</section>
+</div>

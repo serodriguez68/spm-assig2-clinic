@@ -1,22 +1,32 @@
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
+<div class="main">
 
-    <h1 class="display-4">
-      <%= "Welcome #{current_user.name.titleize}!" %>
-    </h1>
-    <p class="lead">What do you want to do today?</p>
+    <section class="signup">
+        <div class="container">
+            <div class="signup-content">
+                <h1 class="display-4">
+                <%= "Welcome #{current_user.name.titleize}!" %>
+              </h1>
+                <br>
+                <br>
+                <h3 class="lead">What do you want to do today?</h3>
+                <br>
+                <h2 class="lead">View All Appointments</h2>
 
-    <% if policy(Appointment).all? %>
-      <%= link_to 'View Appointments', all_appointments_path, class: 'btn btn-primary btn-lg btn-block' %>
-    <% end %>
+                <p class="loginhere">
+                    <% if policy(Appointment).all? %>
+                        <%= link_to 'VIEW', all_appointments_path, class: 'form-submit btn-lg btn-block' %>
+                            <% end %>
+                </p>
+                <br>
+                <h2 class="lead">Add a Health Care Professional</h2>
 
-    <% if policy(HealthCareProfessional).index? %>
-      <%= link_to 'View all Health Care Professionals', health_care_professionals_path, class: 'btn btn-primary btn-lg btn-block' %>
-    <% end %>
+                <p class="loginhere">
+                    <% if policy(HealthCareProfessional).new? %>
+                        <%= link_to 'ADD', new_health_care_professional_path, class: 'form-submit btn-lg btn-block' %>
+                            <% end %>
+                </p>
 
-    <% if policy(HealthCareProfessional).new? %>
-      <%= link_to 'Create a new Health Care Professional', new_health_care_professional_path, class: 'btn btn-primary btn-lg btn-block' %>
-    <% end %>
-
-  </div>
+            </div>
+        </div>
+    </section>
 </div>

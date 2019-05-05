@@ -1,11 +1,22 @@
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
+<div class="main">
+    <section class="signup">
 
-    <h1 class="display-4">Your Health is Our Priority</h1>
-    <p class="lead">Book an appointment with one of our Health Professionals and Become Immortal .</p>
-
-    <%= link_to "Create an Account to Book an Appointment", new_user_registration_path, class: 'btn btn-primary btn-lg btn-block', role: "button" %>
-    <%= link_to "I Already Have an Account", new_user_session_path, class: 'btn btn-secondary btn-lg btn-block', role: "button" %>
-
-  </div>
+        <div class="container">
+            <div class="signup-content">
+                <h1 class="lead">Your Health is Our Priority</h1>
+                <br>
+                <p class="lead">Book an appointment with one of our Health Professionals and Become Immortal .</p>
+                <br>
+                <h2>Join us today!</h2>
+                <p class="loginhere">
+                    <%= link_to "Sign up",  new_user_registration_path, class: "form-submit btn-lg btn-block" %>
+                </p>
+                <br>
+                <h2>Have an account?</h2>
+                <p class="loginhere">
+                    <%= link_to "Login", new_user_session_path, class: "form-submit btn-lg btn-block" %>
+                </p>
+            </div>
+        </div>
+    </section>
 </div>

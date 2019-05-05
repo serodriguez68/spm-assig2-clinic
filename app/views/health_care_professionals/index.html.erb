@@ -1,50 +1,64 @@
 <div class="container">
-  <br>
-  <div class="row">
-    <div class="col">
-      <h1>Health Care Professionals</h1>
+    <br>
+    <div class="row">
+        <div class="col">
+            <h1>Health Care Professionals</h1>
+        </div>
+        <div class="col">
+            <%# link_to 'New Health Care Professional', new_health_care_professional_path, class: 'btn btn-primary btn-lg float-right' if policy(HealthCareProfessional).new? %>
+        </div>
     </div>
-    <div class="col">
-      <%# link_to 'New Health Care Professional', new_health_care_professional_path, class: 'btn btn-primary btn-lg float-right' if policy(HealthCareProfessional).new? %>
-    </div>
-  </div>
 
-  <br>
-  <%= paginate @health_care_professionals %>
-  <table class="table table-hover">
-    <thead class="thead-dark">
-    <tr>
-      <th>Name</th>
-      <th>ID</th>
-      <th>Specialty</th>
-      <th>Email</th>
-      <th>Consultation Fee</th>
-      <th>Resigned at</th>
-      <th colspan="2"></th>
-    </tr>
-    </thead>
+    <br>
+    <%= paginate @health_care_professionals %>
+        <table class="table table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>ID</th>
+                    <th>Specialty</th>
+                    <th>Email</th>
+                    <th>Consultation Fee</th>
+                    <th>Resigned at</th>
+                    <th colspan="2"></th>
+                </tr>
+            </thead>
 
-    <tbody>
-    <% @health_care_professionals.each do |hcp| %>
-      <tr>
-        <td><%= hcp.name %></td>
-        <td><%= hcp.id %></td>
-        <td><%= hcp.specialty_name %></td>
-        <td><%= hcp.email %></td>
-        <td><%= number_to_currency hcp.consultation_fee %></td>
-        <td><%= display_resigned_at_date(hcp)  %></td>
-        <td><%= link_to 'Edit', edit_health_care_professional_path(hcp), class: 'btn btn-sm btn-secondary' if policy(hcp).edit? %></td>
-        <td>
-          <% if policy(hcp).destroy? %>
-            <%= link_to 'Resign', hcp,
+            <tbody>
+                <% @health_care_professionals.each do |hcp| %>
+                    <tr>
+                        <td>
+                            <%= hcp.name %>
+                        </td>
+                        <td>
+                            <%= hcp.id %>
+                        </td>
+                        <td>
+                            <%= hcp.specialty_name %>
+                        </td>
+                        <td>
+                            <%= hcp.email %>
+                        </td>
+                        <td>
+                            <%= number_to_currency hcp.consultation_fee %>
+                        </td>
+                        <td>
+                            <%= display_resigned_at_date(hcp)  %>
+                        </td>
+                        <td>
+                            <%= link_to 'Edit', edit_health_care_professional_path(hcp), class: 'btn btn-sm btn-secondary' if policy(hcp).edit? %>
+                        </td>
+                        <td>
+                            <% if policy(hcp).destroy? %>
+                                <%= link_to 'Resign', hcp,
                         method: :delete,
                         data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
-  <%= paginate @health_care_professionals %>
+                                    <% end %>
+                        </td>
+                    </tr>
+                    <% end %>
+            </tbody>
+        </table>
+        <%= paginate @health_care_professionals %>
 
 </div>

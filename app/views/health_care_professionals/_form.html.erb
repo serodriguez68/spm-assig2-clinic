@@ -1,33 +1,43 @@
-<%= form_for health_care_professional do |f| %>
+<div class="main">
+    <section class="signup">
+        <img src="images/signup-bg.jpg" alt="">
+        <div class="container">
 
-  <%= render 'layouts/form_errors', resource: health_care_professional %>
+            <div class="signup-content">
+                <%= form_for health_care_professional do |f| %>
 
-  <div class="form-group">
-    <%= f.label :specialty_id %>
-    <%= f.collection_select(:specialty_id, Specialty.all.order(name: :asc), :id, :name,
-                            {prompt: true}, {class: 'form-control', required: true }) %>
-  </div>
+                    <%= render 'layouts/form_errors', resource: health_care_professional %>
 
-  <div class="form-group">
-    <%= f.label :name %>
-    <%= f.text_field :name, required: true, class: 'form-control', placeholder: 'Jamiro Quai' %>
-  </div>
+                        <div class="form-group">
+                            <%= f.label :specialty_id %>
+                                <%= f.collection_select(:specialty_id, Specialty.all.order(name: :asc), :id, :name,
+                            {prompt: true}, {class: 'form-control  simplepicker-btn', required: true }) %>
+                        </div>
 
-  <div class="form-group">
-    <%= f.label :email %>
-    <%= f.email_field :email, required: true,
+                        <div class="form-group">
+                            <%= f.label :name %>
+                                <%= f.text_field :name, required: true, class: 'form-control border border-info', placeholder: 'Jamiro Quai' %>
+                        </div>
+
+                        <div class="form-group">
+                            <%= f.label :email %>
+                                <%= f.email_field :email, required: true,
                       placeholder: 'jamiro@quai.com',
-                      class: 'form-control' %>
-  </div>
+                      class: 'form-control border border-info' %>
+                        </div>
 
-  <div class="form-group">
-    <%= f.label :consultation_fee, 'Consultation fee (AUD per hour)' %>
-    <%= f.number_field :consultation_fee,
+                        <div class="form-group">
+                            <%= f.label :consultation_fee, 'Consultation fee (AUD per hour)' %>
+                                <%= f.number_field :consultation_fee,
                        required: true, min: 0, max: 1000, step: ".01",
                        placeholder: '50.50',
-                       class: 'form-control' %>
-  </div>
+                       class: 'form-control border border-info' %>
+                        </div>
 
-  <%= f.submit 'Submit', class: 'btn btn-primary btn-block' %>
+                        <%= f.submit 'Submit', class: 'form-submit' %>
 
-<% end %>
+                            <% end %>
+            </div>
+        </div>
+    </section>
+</div>

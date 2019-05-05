@@ -1,45 +1,66 @@
-<div class="container">
-  <br>
-  <h1>My Appointments</h1>
-  <br>
-  <%= paginate @appointments %>
-  <table class="table table-hover">
-    <thead class="thead-dark">
-    <tr>
-      <th>ID</th>
-      <th>Date and Time</th>
-      <th>Health Care Professional</th>
-      <th>Consultation Fee</th>
-      <th>Your message to the HCP</th>
-      <th colspan="1"></th>
-    </tr>
-    </thead>
+<body>
 
-    <tbody>
-    <% @appointments.each do |app| %>
-      <%= content_tag :tr, class: app.past? ? '' : 'table-warning' do  %>
+    <h1 class="text-center ">My Appointments</h1>
+    <br>
+    <div class="limiter">
+        <div class="table100 ver1 m-b-110 table-hover">
+            <div class="table100-head">
+                <table class="table table-hover">
+                    <thead class="thead-dark">
+                        <tr class="row100 head">
+                            <th class="cell100 column1">ID</th>
+                            <th class="cell100 column2">Date and Time</th>
+                            <th class="cell100 column3">Health Care Professional</th>
+                            <th class="cell100 column4">Consultation Fee</th>
+                            <th class="cell100 column5">Your message</th>
+                            <th class="cell100 column6">Cancel</th>
+                            <th colspan="1"></th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
 
-        <td><%= app.id %></td>
-        <td><%= l app.start_time, format: :long %></td>
-        <td>
-          <strong><%= app.health_care_professional_name %> </strong>
-          | <%= app.health_care_professional_specialty_name %>
-        </td>
-        <td><%= number_to_currency app.consultation_fee %></td>
-        <td><%= default_appointment_message(app) %></td>
-        <td>
-          <% if policy(app).destroy? %>
-            <%= link_to 'Cancel', app,
-                        method: :delete,
-                        data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
-          <% end %>
-        </td>
+            <div class="table100-body js-pscroll">
+                <table>
+                    <tbody>
+                    <tr class="row100 body">
+                    <% @appointments.each do |app| %>
+                        <%= content_tag :tr, class: app.past? ? 'table-default' : 'table-info' do  %>
 
-      <% end %>
-    <% end %>
-    </tbody>
-  </table>
-  <%= paginate @appointments %>
+                            <td class="cell100 column1">
+                                <%= app.id %>
+                            </td>
+                            <td class="cell100 column2">
+                                <%= l app.start_time, format: :long %>
+                            </td>
+                            <td class="cell100 column3">
+                                <strong><%= app.health_care_professional_name %> </strong> |
+                                <%= app.health_care_professional_specialty_name %>
+                            </td>
+                            <td class="cell100 column4">
+                                <%= number_to_currency app.consultation_fee %>
+                            </td>
+                            <td class="cell100 column5">
+                                <%= default_appointment_message(app) %>
+                            </td>
+                            <td class="cell100 column6">
+                                <% if policy(app).destroy? %>
+                                    <%= link_to 'Cancel', app,
+                method: :delete,
+                data: { confirm: 'Are you sure?' }, class: 'form-submit' %>
+                                        <% end %>
+                            </td>
 
-</div>
+                            <% end %>
+                                <% end %>
+                                </tr>
 
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+ 
+
+</body>

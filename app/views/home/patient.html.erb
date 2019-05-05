@@ -1,23 +1,41 @@
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
+<div class="main">
 
-    <h1 class="display-4">
-      <%= "Welcome #{current_user.name.titleize}!" %>
-    </h1>
-    <p class="lead">What do you want to do today?</p>
+    <section class="signup">
 
-    <% if policy(Appointment).new? %>
-      <%= link_to 'Book a New Appointment', new_appointment_path, class: 'btn btn-primary btn-lg btn-block' %>
-    <% end %>
+        <div class="container">
+            <div class="signup-content">
+                <h1 class="display-4">
+            <%= "Welcome #{current_user.name.titleize}!" %>
+          </h1>
+                <br>
+                <br>
+                <h3 class="display-5">What do you want to do today?</h3>
+                <br>
+                <h2 class="lead">Book an Appointment</h2>
 
-    <% if policy(Appointment).my? %>
-      <%= link_to 'View or Cancel my Appointments', my_appointments_path, class: 'btn btn-primary btn-lg btn-block' %>
-    <% end %>
+                <p class="loginhere">
+                    <% if policy(Appointment).new? %>
+                        <%= link_to 'BOOK', new_appointment_path, class: 'form-submit btn-lg btn-block' %>
+                            <% end %>
+                </p>
+                <br>
+                <h2 class="lead">View or Cancel my Appointments</h2>
 
-    <% if policy(User).edit? %>
-      <%= link_to 'Edit my Profile', edit_user_registration_path, class: 'btn btn-primary btn-lg btn-block' %>
-    <% end %>
+                <p class="loginhere">
+                    <% if policy(Appointment).my? %>
+                        <%= link_to 'VIEW/CANCEL', my_appointments_path, class: 'form-submit btn-lg btn-block' %>
+                            <% end %>
+                </p>
+                <br>
+                <h2 class="lead">Edit my Profile</h2>
 
+                <p class="loginhere">
+                    <% if policy(User).edit? %>
+                        <%= link_to 'EDIT', edit_user_registration_path, class: 'form-submit  btn-lg btn-block' %>
+                            <% end %>
+                </p>
 
-  </div>
+            </div>
+        </div>
+    </section>
 </div>
