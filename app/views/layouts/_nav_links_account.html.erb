@@ -2,7 +2,9 @@
   <span class="navbar-text">
     <%= current_user.name %>'s Account |
   </span>
-  <li class='nav-item'><%= link_to 'Edit account', edit_user_registration_path, class: 'nav-link' %></li>
+  <% if policy(User).edit? %>
+    <li class='nav-item'><%= link_to 'Edit account', edit_user_registration_path, class: 'nav-link' %></li>
+  <% end %>
   <li class='nav-item'><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete', class: 'nav-link' %></li>
 <% else %>
   <li class='nav-item'><%= link_to 'Sign in', new_user_session_path, class: 'nav-link' %></li>

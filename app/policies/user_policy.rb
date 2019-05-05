@@ -15,7 +15,11 @@ class UserPolicy
   end
 
   def update?
-    @current_user.admin?
+    @current_user.patient?
+  end
+
+  def edit?
+    @current_user.patient?
   end
 
   def destroy?
