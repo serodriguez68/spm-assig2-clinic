@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
     if resource.patient?
       my_appointments_path
     elsif resource.admin?
-      all_appointments_path
+      home_admin_path
     end
   end
 end

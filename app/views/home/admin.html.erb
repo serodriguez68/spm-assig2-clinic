@@ -1,0 +1,22 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+
+    <h1 class="display-4">
+      <%= "Welcome #{current_user.name.titleize}!" %>
+    </h1>
+    <p class="lead">What do you want to do today?</p>
+
+    <% if policy(Appointment).all? %>
+      <%= link_to 'View Appointments', all_appointments_path, class: 'btn btn-primary btn-lg btn-block' %>
+    <% end %>
+
+    <% if policy(HealthCareProfessional).index? %>
+      <%= link_to 'View all Health Care Professionals', health_care_professionals_path, class: 'btn btn-primary btn-lg btn-block' %>
+    <% end %>
+
+    <% if policy(HealthCareProfessional).new? %>
+      <%= link_to 'Create a new Health Care Professional', new_health_care_professional_path, class: 'btn btn-primary btn-lg btn-block' %>
+    <% end %>
+
+  </div>
+</div>

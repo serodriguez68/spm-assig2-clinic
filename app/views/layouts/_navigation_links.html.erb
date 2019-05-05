@@ -1,4 +1,13 @@
 <% if user_signed_in? %>
+
+  <% if policy(:home).admin? %>
+    <li class='nav-item'><%= link_to 'Admin Home', home_admin_path, class: 'nav-link' %></li>
+  <% end %>
+
+  <% if policy(:home).patient? %>
+    <li class='nav-item'><%= link_to 'Home', home_patient_path, class: 'nav-link' %></li>
+  <% end %>
+
   <% if policy(HealthCareProfessional).index? %>
     <li class='nav-item'><%= link_to 'Health Care Professionals', health_care_professionals_path, class: 'nav-link' %></li>
   <% end %>
