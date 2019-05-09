@@ -16,13 +16,13 @@
 
                         <div class="form-group">
                             <%= f.label :name %>
-                                <%= f.text_field :name, required: true, class: 'form-control border border-info', placeholder: 'Jamiro Quai' %>
+                                <%= f.text_field :name, required: true, class: 'form-control border border-info', placeholder: '' %>
                         </div>
 
                         <div class="form-group">
                             <%= f.label :email %>
                                 <%= f.email_field :email, required: true,
-                      placeholder: 'jamiro@quai.com',
+                      placeholder: '',
                       class: 'form-control border border-info' %>
                         </div>
 
@@ -30,7 +30,7 @@
                             <%= f.label :consultation_fee, 'Consultation fee (AUD per hour)' %>
                                 <%= f.number_field :consultation_fee,
                        required: true, min: 0, max: 1000, step: ".01",
-                       placeholder: '50.50',
+                       placeholder: '',
                        class: 'form-control border border-info' %>
                         </div>
 

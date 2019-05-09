@@ -10,32 +10,32 @@
 
           <div class="form-group">
             <%= f.label :name %>
-            <%= f.text_field :name, autofocus: true, required: true, class: 'form-control border border-info', placeholder: 'Citizen Jane' %>
+            <%= f.text_field :name, autofocus: true, required: true, class: 'form-control border border-info', placeholder: '' %>
           </div>
 
           <div class="form-group">
             <%= f.label :email %>
-            <%= f.email_field :email, class: 'form-control border border-info', required: true, placeholder: 'citizen.jane@example.com' %>
+            <%= f.email_field :email, class: 'form-control border border-info', required: true, placeholder: '' %>
           </div>
 
           <div class="form-group">
             <%= f.label :phone %>
-            <%= f.number_field :phone, class: 'form-control border border-info', required: true, placeholder: '0452175637' %>
+            <%= f.number_field :phone, class: 'form-control border border-info', required: true, placeholder: '' %>
           </div>
 
           <div class="form-group">
             <%= f.label :address, 'Home address' %>
-            <%= f.text_field :address, required: true, class: 'form-control border border-info', placeholder: '444 Doepel Dr, Docklands, VIC' %>
+            <%= f.text_field :address, required: true, class: 'form-control border border-info', placeholder: '' %>
           </div>
 
           <div class="form-group">
             <%= f.label :password %>
-            <%= f.password_field :password, class: 'form-control border border-info', required: true ,placeholder: '*********'%>
+            <%= f.password_field :password, class: 'form-control border border-info', required: true ,placeholder: ''%>
           </div>
 
           <div class="form-group">
             <%= f.label :password_confirmation %>
-            <%= f.password_field :password_confirmation, class: 'form-control border border-info', required: true ,placeholder: '*********'%>
+            <%= f.password_field :password_confirmation, class: 'form-control border border-info', required: true ,placeholder: ''%>
           </div>
 
           <%= f.submit 'Sign up', :class=>"form-submit" %>

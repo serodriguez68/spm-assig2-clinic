@@ -142,6 +142,10 @@ p {
 .form-control:focus {
   border-color:#00abd1;
 }
+
+.pagination{
+    padding-left:40px;
+}
 .page-item.disabled .page-link {
     color: gray; 
   }

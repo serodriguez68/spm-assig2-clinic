@@ -12,12 +12,12 @@
 
                         <div class="form-group">
                             <%= f.label :name %>
-                                <%= f.text_field :name, autofocus: true, required: true, class: 'form-control border border-info', placeholder: 'Citizen Jane' %>
+                                <%= f.text_field :name, autofocus: true, required: true, class: 'form-control border border-info', placeholder: '' %>
                         </div>
 
                         <div class="form-group">
                             <%= f.label :email %>
-                                <%= f.email_field :email, class: 'form-control border border-info', required: true, placeholder: 'citizen.jane@example.com' %>
+                                <%= f.email_field :email, class: 'form-control border border-info', required: true, placeholder: '' %>
                                     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
                                         <div>Currently waiting confirmation for:
                                             <%= resource.unconfirmed_email %>
@@ -27,12 +27,12 @@
 
                         <div class="form-group">
                             <%= f.label :phone %>
-                                <%= f.number_field :phone, class: 'form-control border border-info', required: true, placeholder: '0452175637' %>
+                                <%= f.number_field :phone, class: 'form-control border border-info', required: true, placeholder: '' %>
                         </div>
 
                         <div class="form-group">
                             <%= f.label :address, 'Home address' %>
-                                <%= f.text_field :address, required: true, class: 'form-control border border-info', placeholder: '444 Doepel Dr, Docklands, VIC' %>
+                                <%= f.text_field :address, required: true, class: 'form-control border border-info', placeholder: '' %>
                         </div>
 
                         <fieldset>
