@@ -1,13 +1,13 @@
-<body>
+<div>
 
     <h1 class="text-center ">My Appointments</h1>
     <br>
-    <%= paginate @appointments %>
+    
     <div class="limiter">
-        <div class="table100 ver1 m-b-110 table-hover">
-            <div class="table100-head">
-                <table class="table table-hover">
-                    <thead class="thead-dark">
+  <div class="table100 ver1 m-b-110 table-hover">
+    <div class="table100-head">
+      <table class="table table-hover">
+        <thead class="thead-dark">
                         <tr class="row100 head">
                             <th class="cell100 column1">ID</th>
                             <th class="cell100 column2">Date and Time</th>
@@ -16,16 +16,16 @@
                             <th class="cell100 column5">Your message</th>
                             <th class="cell100 column6">Cancel</th>
                             <th colspan="1"></th>
-                        </tr>
-                    </thead>
-                </table>
-            </div>
+        </tr>
+        </thead>
+      </table>
+    </div>
 
-            <div class="table100-body js-pscroll">
-                <table>
-                    <tbody>
-                    <tr class="row100 body">
-                    <% @appointments.each do |app| %>
+    <div class="table100-body js-pscroll">
+    <table>
+      <tbody>
+      <tr class="row100 body">
+        <% @appointments.each do |app| %>
                         <%= content_tag :tr, class: app.past? ? 'table-default' : 'table-info' do  %>
 
                             <td class="cell100 column1">
@@ -48,7 +48,7 @@
                                 <% if policy(app).destroy? %>
                                     <%= link_to 'Cancel', app,
                 method: :delete,
-                data: { confirm: 'Are you sure?' }, class: 'form-submit' %>
+                data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
                                         <% end %>
                             </td>
 
@@ -56,13 +56,12 @@
                                 <% end %>
                                 </tr>
 
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-    <%= paginate @appointments %>
-
- 
-
-</body>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                        <%= paginate @appointments %>
+                        
+                        
+                        </div>
