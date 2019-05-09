@@ -12,8 +12,6 @@ class AppointmentsController < ApplicationController
     @appointment = current_user.appointments.new(appointment_params)
     authorize @appointment
     if @appointment.save
-      # Send email to HCP
-      AppointmentMailer.with(appointment: @appointment).create.deliver_later
       redirect_to my_appointments_path, notice: "Your appointment has been created"
     else
       render :new
@@ -23,7 +21,6 @@ class AppointmentsController < ApplicationController
   def destroy
     @appointment = Appointment.find(params[:id])
     authorize @appointment
-    AppointmentMailer.with(appointment: @appointment).notify_cancellation.deliver_later
     @appointment.destroy
     redirect_to my_appointments_path, notice: "Your appointment has been cancelled"
   end
