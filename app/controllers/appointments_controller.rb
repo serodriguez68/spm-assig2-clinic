@@ -1,7 +1,6 @@
 class AppointmentsController < ApplicationController
   before_action :authenticate_user!
   after_action :verify_authorized
-  after_action :verify_policy_scoped, only: [:my]
 
   def new
     @appointment = Appointment.new(user: current_user)
@@ -16,21 +15,6 @@ class AppointmentsController < ApplicationController
     else
       render :new
     end
-  end
-
-  def destroy
-    @appointment = Appointment.find(params[:id])
-    authorize @appointment
-    @appointment.destroy
-    redirect_to my_appointments_path, notice: "Your appointment has been cancelled"
-  end
-
-  def my
-    @appointments = policy_scope(Appointment)
-                      .includes({health_care_professional: [:specialty], user: nil})
-                      .order(start_time: :desc)
-                      .page(params[:page])
-    authorize(@appointments)
   end
 
   def available_slots_between

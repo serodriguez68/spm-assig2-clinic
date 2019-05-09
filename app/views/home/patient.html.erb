@@ -18,14 +18,7 @@
                         <%= link_to 'BOOK', new_appointment_path, class: 'form-submit btn-lg btn-block' %>
                             <% end %>
                 </p>
-                <br>
-                <h2 class="lead">View or Cancel my Appointments</h2>
 
-                <p class="loginhere">
-                    <% if policy(Appointment).my? %>
-                        <%= link_to 'VIEW/CANCEL', my_appointments_path, class: 'form-submit btn-lg btn-block' %>
-                            <% end %>
-                </p>
                 <br>
                 <h2 class="lead">Edit my Profile</h2>
 
