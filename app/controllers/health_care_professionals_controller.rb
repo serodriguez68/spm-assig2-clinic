@@ -20,7 +20,7 @@ class HealthCareProfessionalsController < ApplicationController
     authorize @health_care_professional
 
     if @health_care_professional.save
-      redirect_to health_care_professionals_path, notice: 'Health care professional was successfully created.'
+      redirect_to home_admin_path, notice: 'Health care professional was successfully created.'
     else
       render :new
     end
