@@ -24,4 +24,5 @@ class ApplicationController < ActionController::Base
       home_admin_path
     end
   end
+
 end

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   root to: 'visitors#index'
-  devise_for :users
+  devise_for :users, controllers: {registrations: :registrations}
   resources :health_care_professionals, except: [:show] do
     collection do
       get :index_of_specialty
