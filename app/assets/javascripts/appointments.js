@@ -136,7 +136,7 @@ $( document ).ready(function() {
                 $("#appointment_start_time").prop("selectedIndex", 0);
             } else {
                 // There are no options available
-                default_option = [{text: "There are no appointments available. Please try a different date range.", value: null}]
+                default_option = [{text: "No appointments available. Try a different date range.", value: null}]
                 $("#appointment_start_time").replaceOptions(default_option);
                 $("#appointment_start_time").prop('disabled', true);
             }

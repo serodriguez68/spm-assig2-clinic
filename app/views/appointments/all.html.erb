@@ -1,62 +1,63 @@
 <div>
+  <br>
+  <h1 class="text-center text-light">All Appointments</h1>
+  <br>
 
-<h1 class="text-center ">All Appointments</h1>
-<br>
 
+  <div class="limiter">
+    <div class="table100 ver1 m-b-110 table-hover">
+      <div class="table100-head">
+        <table class="table table-hover">
+          <thead class="thead-dark">
+          <tr class="row100 head">
+            <th class="cell100 columnall1">ID name</th>
+            <th class="cell100 columnall2">Date and Time</th>
+            <th class="cell100 columnall3">Health Care Professional</th>
+            <th class="cell100 columnall4">Consultation Fee</th>
+            <th class="cell100 columnall5">Patient</th>
+            <th colspan="1"></th>
+          </tr>
+          </thead>
+        </table>
+      </div>
 
-<div class="limiter">
-  <div class="table100 ver1 m-b-110 table-hover">
-    <div class="table100-head">
-      <table class="table table-hover">
-        <thead class="thead-dark">
-        <tr class="row100 head">
-          <th class="cell100 columnall1">ID name</th>
-          <th class="cell100 columnall2">Date and Time</th>
-          <th class="cell100 columnall3">Health Care Professional</th>
-          <th class="cell100 columnall4">Consultation Fee</th>
-          <th class="cell100 columnall5">Patient</th>
-          <th colspan="1"></th>
-        </tr>
-        </thead>
-      </table>
-    </div>
+      <div class="table100-body js-pscroll">
+        <table>
+          <tbody>
+          <tr class="row100 body">
+            <% @appointments.each do |app| %>
+              <%= content_tag :tr, class: app.past? ? 'table-default' : 'table-info' do  %>
 
-    <div class="table100-body js-pscroll">
-      <table>
-        <tbody>
-        <tr class="row100 body">
-          <% @appointments.each do |app| %>
-            <%= content_tag :tr, class: app.past? ? 'table-default' : 'table-info' do  %>
-
-              <td class="cell100 columnall1">
-                <%= app.id %>
-              </td>
-              <td class="cell100 columnall2">
-                <%= l app.start_time, format: :long %>
-              </td>
-              <td class="cell100 columnall3">
-                <strong><%= app.health_care_professional_name %> </strong> |
-                <%= app.health_care_professional_specialty_name %>
-              </td>
-              <td class="cell100 columnall4">
-                <%= number_to_currency app.consultation_fee %>
-              </td>
-              <td class="cell100 columnall5">
-                <strong><%= app.user_name %> </strong> |
-                <%= app.user_phone %>
-                |
-                <%= app.user_email %>
-              </td>
+                <td class="cell100 columnall1">
+                  <%= app.id %>
+                </td>
+                <td class="cell100 columnall2">
+                  <%= l app.start_time, format: :long %>
+                </td>
+                <td class="cell100 columnall3">
+                  <strong><%= app.health_care_professional_name %> </strong> |
+                  <%= app.health_care_professional_specialty_name %>
+                </td>
+                <td class="cell100 columnall4">
+                  <%= number_to_currency app.consultation_fee %>
+                </td>
+                <td class="cell100 columnall5">
+                  <strong><%= app.user_name %> </strong> |
+                  <%= app.user_phone %>
+                  |
+                  <%= app.user_email %>
+                </td>
+              <% end %>
             <% end %>
-          <% end %>
-        </tr>
+          </tr>
 
-        </tbody>
-      </table>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
-</div>
-<%= paginate @appointments %>
+  <br>
+  <%= paginate @appointments %>
 
 
 </div>
